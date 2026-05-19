@@ -1,0 +1,14 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Catalog.API.Application/Catalog.API.Application.csproj" />
+    <Project Path="src/Catalog.API.Domain/Catalog.API.Domain.csproj" />
+    <Project Path="src/Catalog.API.Infrastructure/Catalog.API.Infrastructure.csproj" />
+    <Project Path="src/Catalog.API/Catalog.API.csproj" />
+    <Project Path="src/FastFoodSystem.Gateway/FastFoodSystem.Gateway.csproj" />
+    <Project Path="src/Ordering.API.Application/Ordering.API.Application.csproj" />
+    <Project Path="src/Ordering.API.Domain/Ordering.API.Domain.csproj" />
+    <Project Path="src/Ordering.API.Infrastructure/Ordering.API.Infrastructure.csproj" />
+    <Project Path="src/Ordering.API/Ordering.API.csproj" />
+    <Project Path="src/Shared.Events/Shared.Events.csproj" />
+  </Folder>
+</Solution>
