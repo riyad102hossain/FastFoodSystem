@@ -21,7 +21,11 @@ public static class DependencyInjection
 
         services.AddStackExchangeRedisCache(options =>
         {
-            options.Configuration = configuration.GetConnectionString("Redis");
+            var redisConn = configuration.GetConnectionString("Redis")
+                            ?? configuration["ConnectionStrings:Redis"]
+                            ?? Environment.GetEnvironmentVariable("ConnectionStrings__Redis")
+                            ?? "redis:6379";
+            options.Configuration = redisConn;
             options.InstanceName = "CatalogCache:";
         });
 

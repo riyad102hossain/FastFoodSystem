@@ -39,6 +39,9 @@ app.UseRouting();
 app.UseCors("AllowAngularFrontend");
 app.UseRateLimiter();
 
+// Simple root endpoint so '/' returns a friendly 200 response
+app.MapGet("/", () => Results.Ok(new { status = "FastFoodSystem Gateway running" }));
+
 app.MapReverseProxy();
 
 app.Run();

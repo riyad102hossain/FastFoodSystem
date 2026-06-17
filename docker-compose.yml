@@ -66,6 +66,43 @@ services:
       - rabbitmq
     restart: unless-stopped
 
+  catalog-api:
+    build:
+      context: .
+      dockerfile: Dockerfile.Catalog
+    container_name: fastfood_catalog_api
+    ports:
+      - "52548:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_URLS: http://+:8080
+      ConnectionStrings__CatalogDatabase: "Host=postgres;Port=5432;Database=CatalogDb;Username=postgres;Password=postgres"
+      ConnectionStrings__Redis: "redis:6379"
+      RabbitMq__Host: "rabbitmq"
+      RabbitMq__Username: "guest"
+      RabbitMq__Password: "guest"
+    depends_on:
+      - postgres
+      - redis
+    restart: unless-stopped
+
+  ordering-api:
+    build:
+      context: .
+      dockerfile: Dockerfile.Ordering
+    container_name: fastfood_ordering_api
+    ports:
+      - "52549:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_URLS: http://+:8080
+      RabbitMq__Host: "rabbitmq"
+      RabbitMq__Username: "guest"
+      RabbitMq__Password: "guest"
+    depends_on:
+      - rabbitmq
+    restart: unless-stopped
+
 volumes:
   catalogdb_data:
   redis_data:
